@@ -1,0 +1,17 @@
+<h1>danh sach nguoi dung</h1>
+<table class="table table-hover">
+   <thead class="table-dark">
+    <tr>
+        <th>name</th>
+        <th>age</th>
+        <th>address</th>
+        <th>email</th>
+    </tr>
+   </thead>
+   <tr *ngFor="let x of users">
+        <td>{{x.name}}</td>
+        <td>{{x.age}}</td>
+        <td>{{x.address}}</td>
+        <td>{{x.email}}</td>
+   </tr>
+</table>

@@ -1,0 +1,24 @@
+<div class="col-3">
+    <h3>Create user</h3>
+<form [formGroup]="userFormCreate" (ngSubmit)="add()">
+    <div class="mb-3">
+        <label class="form-label" for="">name</label>
+        <input class="form-control"  type="text" formControlName="name">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="">age</label>
+        <input class="form-control" type="number" formControlName="age">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="">address</label>
+        <input class="form-control" type="text" formControlName="address">
+    </div>
+    <div class="mb-3">
+        <label class="form-label" for="">email</label>
+        <input class="form-control" type="text" formControlName="email">
+    </div>
+    <div>
+        <input type="submit" value="create">
+    </div>
+</form>
+</div>
