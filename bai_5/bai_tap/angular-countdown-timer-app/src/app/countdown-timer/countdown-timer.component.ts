@@ -17,7 +17,7 @@ export class CountdownTimerComponent implements OnInit {
   }
 
   start(){
-    this.y = setInterval(() =>{this.x--}, 2000);
+    this.y = setInterval(() =>{this.x = --this.x}, 1000);
   }
 
   stop(){

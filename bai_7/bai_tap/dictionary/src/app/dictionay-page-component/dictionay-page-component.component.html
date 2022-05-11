@@ -1,0 +1,28 @@
+<form [formGroup]="dictionay">
+    <table class="table">
+        <tr>
+            <th>
+                Tiếng Anh
+            </th>
+            <th>
+                Tiếng việt
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" formControlName="word" (change)="translate()">
+            </td>
+            <td>
+                {{mean}}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a routerLink="/detail"><button>submit</button></a>
+            </td>
+            <td>
+                <router-outlet></router-outlet>
+            </td>
+        </tr>
+    </table>
+</form>

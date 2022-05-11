@@ -1,0 +1,34 @@
+{
+  "product": [
+    {
+      "id": 3,
+      "name": "IPhone X",
+      "price": 968000,
+      "description": "97%"
+    },
+    {
+      "id": 4,
+      "name": "IPhone 10",
+      "price": 968000,
+      "description": "97%"
+    },
+    {
+      "id": 5,
+      "name": "2",
+      "price": 2,
+      "description": "2"
+    },
+    {
+      "name": "4",
+      "price": 4,
+      "description": "4",
+      "id": 6
+    },
+    {
+      "name": "6",
+      "price": 6,
+      "description": "6",
+      "id": 7
+    }
+  ]
+}

@@ -27,7 +27,7 @@ export class UserCreateComponent implements OnInit {
   
 
   add(){
-    userDao.users.push(this.userFormCreate?.value);
+    userDao.users.push(this.userFormCreate.value);
     this.userFormCreate.reset();
   }
 
