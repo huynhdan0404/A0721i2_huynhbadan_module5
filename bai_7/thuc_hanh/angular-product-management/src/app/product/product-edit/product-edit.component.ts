@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/model/product';
 import { ProductService } from 'src/app/service/product.service';
@@ -10,31 +10,58 @@ import { ProductService } from 'src/app/service/product.service';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-
-  id!: any;
   product!: Product;
   productFormEdit!: FormGroup;
   constructor(private productService: ProductService, private activatedRouter: ActivatedRoute, private router: Router) { }
-  ngOnInit(): void {}
-    // this.activatedRouter.paramMap.subscribe((param) => {
-    //  this.id = param.get("id")
-    //   this.product = this.productService.findProductById(this.id);
-    //   console.log(this.product);
-    // });
+  ngOnInit(): void {
+    this.activatedRouter.paramMap.subscribe((param) => {
+  
+     const id = Number(param.get('id'));
+     console.log(id)
+     this.productService.findProductById(id).subscribe(
+      next=>{
+          this.product = next;
+          this.productFormEdit.patchValue({
+            id:next.id,
+            name:next.name,
+            price:next.price,
+            description: next.description
+          })
+      },
+      () =>{
 
-  //   this.productFormEdit = new FormGroup({
-  //     id: new FormControl(this.product.id),
-  //     name: new FormControl(this.product.name),
-  //     price: new FormControl(this.product.price),
-  //     description: new FormControl(this.product.description)
-  //   });
-  // }
+      }, 
+      () =>{
+        console.log(this.product)
+      });
+ 
+      console.log(this.product)
+    });
+
+    this.productFormEdit = new FormGroup({
+      id: new FormControl(),
+      name: new FormControl('',Validators.required),
+      price: new FormControl('',Validators.required),
+      description: new FormControl('',Validators.required),
+    });
+  }
 
 
-  // editForm() {
-  //   const product1 = this.productFormEdit.value;
-  //   this.productService.saveProduct(product1,product1.id);
-  //   this.router.navigateByUrl('/product/list');
-  // }
+  editForm() {
+    this.product = this.productFormEdit.value;
+    this.productService.updateProduct(this.product).subscribe(
+      ()=>{
+
+      },
+      ()=>{
+        
+      },
+      ()=>{
+     
+        this.router.navigateByUrl("/product/list")
+      },
+    );
+    // this.router.navigateByUrl("/product/list")
+  }
   
 }

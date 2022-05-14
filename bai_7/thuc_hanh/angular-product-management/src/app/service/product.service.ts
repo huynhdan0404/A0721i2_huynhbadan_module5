@@ -37,6 +37,7 @@ export class ProductService {
   // }];
 
   readonly API_URL = "http://localhost:3000/product";
+  readonly API_URL_Category = "http://localhost:3000/category"
 
   constructor(private httpClient:HttpClient) { }
 
@@ -46,26 +47,24 @@ export class ProductService {
 
   saveProduct(product:Product):Observable<Product> {
 
-      // let check =false;
-      // let j:any;
-
-      // for (let i = 0; i < this.products.length; i++){
-      //   if (this.products[i].id === id) {
-      //     check = true;
-      //     j = i;
-      //     break;
-      //   }
       return this.httpClient.post(this.API_URL,product)
     }
 
-//     if(check){
-//       this.products[j] = product;
-//     }else{
-//       this.products.push(product)
-//     }
-//   }
 
-//   findProductById(id:number):any {
-//     return this.products.find((product) => product.id == id);
-//  }
+  findProductById(id:number):Observable<Product> {
+    return this.httpClient.get<Product>(this.API_URL + '/' + id);
+ }
+
+ updateProduct(product:Product):Observable<void>{
+  return this.httpClient.patch<void>(this.API_URL + '/' + product.id, product);
+ }
+
+ deleteProduct(id:number):Observable<void>{
+   return this.httpClient.delete<void>(this.API_URL+ '/' + id );
+
+ }
+
+ getAllCategory(): Observable<Product[]> {
+  return this.httpClient.get<Product[]>(this.API_URL_Category);
+}
 }
