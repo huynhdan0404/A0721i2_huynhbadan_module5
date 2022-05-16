@@ -1,7 +1,27 @@
 {
   "product": [
+    {
+      "name": "áo thun",
+      "price": "100",
+      "category": "Áo",
+      "description": "new",
+      "id": 1
+    },
+    {
+      "name": "quần tây",
+      "price": "250",
+      "category": "Quần",
+      "description": "new",
+      "id": 2
+    },
+    {
+      "name": "đồ bộ trẻ em",
+      "price": "150",
+      "category": "Kids",
+      "description": "new",
+      "id": 3
+    }
   ],
-
   "category": [
     {
       "id": 1,
@@ -16,6 +36,4 @@
       "name": "Kids"
     }
   ]
-
-
 }

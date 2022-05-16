@@ -63,6 +63,19 @@
                không được để trống
              </p>
             </div>
+
+            <div class="form-group">
+              <label>Loại</label>
+              <!-- <input type="text" formControlName="category" class="form-control"> -->
+              <select formControlName="category" class="form-select">
+                <option *ngFor="let category of categorys" [value]="category.name" >{{category.name}}</option>
+              </select>
+              <!-- <p class="alert-danger"
+              *ngIf="productForm.get('category')?.invalid && productForm.get('category')?.touched">
+               không được để trống
+             </p> -->
+            </div>
+
             <div class="form-group">
               <label>Mô tả về sản phẩm</label>
               <input type="text" formControlName="description" class="form-control">
