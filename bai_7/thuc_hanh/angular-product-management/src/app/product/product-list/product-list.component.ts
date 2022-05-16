@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/service/product.service';
   styleUrls: ['./product-list.component.css']
 })
 export class ProductListComponent implements OnInit {
-
+  x = 1;
   products:Product[] = [];
 
   constructor(private productService: ProductService,
@@ -22,11 +22,20 @@ export class ProductListComponent implements OnInit {
   }
 
   getAll() {
-     this.productService.getAll().subscribe(
+     this.productService.getAll(this.x).subscribe(
       (data) => {
         this.products = data;
       }
     );
+  }
+
+  nextPage(){
+    this.x = this.x + 1;
+    this.ngOnInit();
+  }
+  backPage(){
+    this.x = this.x - 1;
+    this.ngOnInit();
   }
 
   delete(id:any ,name:any){

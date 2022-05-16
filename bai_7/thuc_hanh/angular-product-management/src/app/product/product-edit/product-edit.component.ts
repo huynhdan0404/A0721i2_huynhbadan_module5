@@ -11,10 +11,10 @@ import { Category } from 'src/app/model/category';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
+
   categorys:Category[] = [];
   product!: Product;
   productFormEdit!: FormGroup;
-  category1: string | undefined;
   constructor(private productService: ProductService, private activatedRouter: ActivatedRoute, private router: Router) { }
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((param) => {
@@ -24,14 +24,15 @@ export class ProductEditComponent implements OnInit {
      this.productService.findProductById(id).subscribe(
       next=>{
           this.product = next;
-          this.category1 = next.category;
           this.productFormEdit.patchValue({
             id:next.id,
             name:next.name,
             price:next.price,
-            // category:next.category,
+            category:next.category,
             description: next.description
           })
+
+          // this.productFormEdit.get('category')?.setValue(next.category , {onlySelf: true});
       },
       () =>{
 
@@ -50,6 +51,8 @@ export class ProductEditComponent implements OnInit {
       category: new FormControl('',Validators.required),
       description: new FormControl('',Validators.required),
     });
+
+  
 
     this.getAllCategory();
   }

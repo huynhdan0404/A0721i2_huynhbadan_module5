@@ -13,6 +13,7 @@ import { ProductService } from 'src/app/service/product.service';
 export class ProductCreateComponent implements OnInit {
   categorys: Category[] = [];
   productForm!: FormGroup;
+  category1 = "Áo";
   constructor(private productService: ProductService,
     private router:Router) { }
 
@@ -27,6 +28,8 @@ export class ProductCreateComponent implements OnInit {
 
     this.getAllCategory();
 
+    this.productForm.get('category')?.setValue(this.category1 , {onlySelf: true});
+
     
   }
   
@@ -40,6 +43,7 @@ export class ProductCreateComponent implements OnInit {
         
       },
       ()=>{
+        alert("thêm mới thành công")
         this.router.navigateByUrl("/product/list")
       },
     );

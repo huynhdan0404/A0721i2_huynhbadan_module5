@@ -41,8 +41,8 @@ export class ProductService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getAll(): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(this.API_URL);
+  getAll(x:number): Observable<Product[]> {
+    return this.httpClient.get<Product[]>(this.API_URL + '?_page=' + x + '&_limit=2');
   }
 
   saveProduct(product:Product):Observable<Product> {
